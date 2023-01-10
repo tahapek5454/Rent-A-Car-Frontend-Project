@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car/car';
+import { CarDetail } from 'src/app/models/car/carDetail';
 import { CarResponseModel } from 'src/app/models/car/carResponseModel';
 import { CarService } from 'src/app/services/car/car.service';
 
@@ -8,32 +9,35 @@ import { CarService } from 'src/app/services/car/car.service';
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.css']
 })
-export class CarComponent implements OnInit{
+export class CarComponent implements OnInit {
 
-  cars:Car[] = []
-  isDatLoaded:boolean = false
+  cars: Car[] = []
+  carDetails: CarDetail[] = []
+  isDatLoaded: boolean = false
 
-
-
-
-
-  constructor(private carService:CarService){}
+  constructor(private carService: CarService) { }
 
   // componentin dom'a yerlesmesinde olucak seyler bizim console'a yazacagimiz seyler gibi
   ngOnInit(): void {
-    
-    this.getCars()
 
-    
-    
+    // this.getCars()
+    this.getCarDetails()
+
+
+
   }
 
+  getCarDetails(){
+    this.carService.getCarDetails("GetCarDetails").subscribe(response => {
+      this.carDetails = response.data
+      this.isDatLoaded = true
 
+    })
 
+  }
 
-
-  getCars(){
-    this.carService.getCars().subscribe(response => {
+  getCars() {
+    this.carService.getCars("GetAllCar").subscribe(response => {
       this.cars = response.data
       this.isDatLoaded = true
     })
