@@ -1,5 +1,12 @@
-<ul class="list-group">
-    <li *ngFor = "let color of colors" class="list-group-item">
-        {{color.name}}
-    </li>
+<ul class="list-group" >
+
+    <button (click)= "changeStatusAllColorButton()" routerLink="cars" class="list-group-item list-group-item-action"
+    [ngClass]="{active: statusAllColoButton}" >
+            Tüm Renkler</button>
+
+    <button (click)="setCurrentColor(color)" *ngFor="let color of colors" routerLink="cars/color/{{color.id}}"
+            [class]="getCurrentColor(color)">
+            {{color.name}}</button>
+
+
 </ul>

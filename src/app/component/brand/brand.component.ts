@@ -11,6 +11,7 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[] = []
   currentBrand:Brand
+  statusAllCarButton = false
 
   constructor(private brandService:BrandService){}
 
@@ -24,8 +25,19 @@ export class BrandComponent implements OnInit {
     this.currentBrand = brand
   }
 
-  getCurrentBrand(brand: Brand){
-    if(this.currentBrand == brand) return "list-group-item list-group-item-action active"
+  changeStatusAllCarButton(){
+    this.statusAllCarButton = !this.statusAllCarButton
+    this.currentBrand={
+      id:0,
+      name:""
+    }
+  }
+ 
+  getCurrentBrand(brand?: Brand){
+    
+    if(this.currentBrand == brand) {
+      this.statusAllCarButton = false
+      return "list-group-item list-group-item-action active"}
 
     else return "list-group-item list-group-item-action"
   }
