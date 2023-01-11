@@ -9,18 +9,27 @@ import { Car } from 'src/app/models/car/car';
   providedIn: 'root'
 })
 export class CarService {
-  apiUrl = "https://localhost:44379/api/Cars/"
+  apiUrl = "https://localhost:44379/api/"
 
 
 
   constructor(private httpClient: HttpClient) { }
 
   // subscribe olunabilir bir metod 
-  getCars(label:string):Observable<ListResponseModel<Car>> {
-    return this.httpClient.get<ListResponseModel<Car>>(this.apiUrl+label)
+  getCars():Observable<ListResponseModel<Car>> {
+    let newApiUrl = this.apiUrl + "Cars/getAllCar"
+    return this.httpClient.get<ListResponseModel<Car>>(newApiUrl)
   }
 
-  getCarDetails(label:string):Observable<ListResponseModel<CarDetail>>{
-    return this.httpClient.get<ListResponseModel<CarDetail>>(this.apiUrl+label)
+  getCarDetails():Observable<ListResponseModel<CarDetail>>{
+    let newApiUrl = this.apiUrl + "Cars/getCarDetails"
+
+    return this.httpClient.get<ListResponseModel<CarDetail>>(newApiUrl)
   }
+
+  getCarsByBrandId(brandId:number):Observable<ListResponseModel<Car>>{
+    let newApiUrl = this.apiUrl + "Cars/GetCarsByBrandId?id="+brandId
+    return this.httpClient.get<ListResponseModel<Car>>(newApiUrl)
+  }
+
 }

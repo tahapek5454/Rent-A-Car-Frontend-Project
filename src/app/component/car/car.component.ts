@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car/car';
 import { CarDetail } from 'src/app/models/car/carDetail';
 import { CarService } from 'src/app/services/car/car.service';
@@ -13,22 +14,35 @@ export class CarComponent implements OnInit {
   cars: Car[] = []
   carDetails: CarDetail[] = []
   isDatLoaded: boolean = false
+  isDetailLoaded:boolean = false
 
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService, private activatedRoute:ActivatedRoute) { }
 
   // componentin dom'a yerlesmesinde olucak seyler bizim console'a yazacagimiz seyler gibi
   ngOnInit(): void {
 
-    // this.getCars()
-    this.getCarDetails()
+    this.activatedRoute.params.subscribe(params =>{
+      if(params["brandId"]){
+        this.getCarsByBrandId(params["brandId"])
+      }else{
+       
+          this.getCarDetails()
+        
+      }
+    })
+
+    
+
+    
 
 
 
   }
 
   getCarDetails(){
-    this.carService.getCarDetails("GetCarDetails").subscribe(response => {
+    this.carService.getCarDetails().subscribe(response => {
       this.carDetails = response.data
+   
       this.isDatLoaded = true
 
     })
@@ -36,11 +50,21 @@ export class CarComponent implements OnInit {
   }
 
   getCars() {
-    this.carService.getCars("GetAllCar").subscribe(response => {
+    this.carService.getCars().subscribe(response => {
       this.cars = response.data
+ 
       this.isDatLoaded = true
     })
   }
+
+  getCarsByBrandId(brandId: number) {
+    this.carService.getCarsByBrandId(brandId).subscribe(response => {
+      this.cars = response.data
+      
+      this.isDatLoaded = true
+    })
+  }
+
 
 
 
