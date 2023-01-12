@@ -1,7 +1,7 @@
 <ul class="list-group">
 
-        <button (click)= "changeStatusAllCarButton()" routerLink="cars" class="list-group-item list-group-item-action"
-        [ngClass]="{active: statusAllCarButton}" >
+        <button (click)="changeStatusAllCarButton()" routerLink="cars" class="list-group-item list-group-item-action"
+                [ngClass]="{active: statusAllCarButton}">
                 Tüm Arabalar</button>
 
         <button (click)="setCurrentBrand(brand)" *ngFor="let brand of brands" routerLink="cars/brand/{{brand.id}}"
@@ -10,4 +10,7 @@
 </ul>
 
 
-<h5 *ngIf="currentBrand"> Sectiginiz Brand {{currentBrand.name}}</h5>
+
+<div *ngIf="currentBrand" class="alert alert-primary" role="alert">
+        Sectiginiz Brand {{currentBrand.name}}
+</div>

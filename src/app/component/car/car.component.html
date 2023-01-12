@@ -1,4 +1,4 @@
-<div *ngIf ="isDatLoaded==false" class="spinner-border" role="status">
+<!-- <div *ngIf ="isDatLoaded==false" class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
 
@@ -21,16 +21,67 @@
             <th>ColorName</th>
             <th>DailyPrice</th>
             <th>KDV DailyPrice</th>
+            <th></th>
         </tr>
     </thead>
 
-    <tr *ngFor="let car of carDetails | filterPipe:filterText" routerLink="cars/detail/{{car.id}}">
-        <td>{{car.id}}</td>
+    <tbody>
+    <tr *ngFor="let car of carDetails | filterPipe:filterText" >
+        <td routerLink="cars/detail/{{car.id}}">{{car.id}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td> 
         <td>{{car.dailyPrice |currency}}</td>
         <td>{{car.dailyPrice |varAdded:18 |currency }}</td>
+        <td> <button (click)="addToCart(car)" class="btn btn-success" type="button">Sepete Ekle</button></td> 
     </tr>
+</tbody>
+</table> -->
+
+
+<div class="container d-flex justify-content-center">
+
+    <div *ngIf="isDatLoaded==false" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <div class="mb-3 m-4">
+        <label for="filterText" class="form-label">Araba Ara</label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+            placeholder="arama ifadesi giriniz">
+    </div>
+    <div *ngIf="filterText" class="alert alert-success m-4">
+        {{filterText}} aradiniz
+    </div>
+</div>
+
+
+<div class="container">
+<table *ngIf="isDatLoaded" class="table  table-striped table-hover p-4">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>BrandName</th>
+            <th>ColorName</th>
+            <th>DailyPrice</th>
+            <th>KDV DailyPrice</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let car of carDetails | filterPipe:filterText">
+            <td routerLink="cars/detail/{{car.id}}">{{car.id}}</td>
+            <td>{{car.brandName}}</td>
+            <td>{{car.colorName}}</td>
+            <td>{{car.dailyPrice |currency}}</td>
+            <td>{{car.dailyPrice |varAdded:18 |currency }}</td>
+            <td> <button (click)="addToCart(car)" class="btn btn-success" type="button">Sepete Ekle</button>
+            </td>
+        </tr>
+    </tbody>
 </table>
-
-

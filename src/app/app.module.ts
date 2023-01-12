@@ -13,6 +13,10 @@ import { RentalComponent } from './component/rental/rental.component';
 import { CarDetailComponent } from './component/car-detail/car-detail.component';
 import { VarAddedPipe } from './pipes/var-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { CartSummaryComponent } from './component/cart-summary/cart-summary.component';
+
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,16 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
     RentalComponent,
     CarDetailComponent,
     VarAddedPipe,
-    FilterPipePipe
+    FilterPipePipe,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
