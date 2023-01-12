@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; //httClient'a injection yapar
+import { FormsModule } from '@angular/forms'; // ngModule entegresi
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { NaviComponent } from './component/navi/navi.component';
 import { ColorComponent } from './component/color/color.component';
 import { RentalComponent } from './component/rental/rental.component';
 import { CarDetailComponent } from './component/car-detail/car-detail.component';
+import { VarAddedPipe } from './pipes/var-added.pipe';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { CarDetailComponent } from './component/car-detail/car-detail.component'
     NaviComponent,
     ColorComponent,
     RentalComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    VarAddedPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

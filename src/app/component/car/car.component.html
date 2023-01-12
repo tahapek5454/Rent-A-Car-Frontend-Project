@@ -2,6 +2,16 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 
+
+<div class="mb-3">
+    <label for="filterText" class="form-label">Araba Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+  </div>
+
+  <div *ngIf="filterText" class="alert alert-success">
+        {{filterText}} aradiniz
+  </div>
+
 <table *ngIf="isDatLoaded" class="table">
 
     <thead>
@@ -10,6 +20,7 @@
             <th>BrandName</th>
             <th>ColorName</th>
             <th>DailyPrice</th>
+            <th>KDV DailyPrice</th>
         </tr>
     </thead>
 
@@ -17,7 +28,8 @@
         <td>{{car.id}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td> 
-        <td>{{car.dailyPrice}}</td>
+        <td>{{car.dailyPrice |currency}}</td>
+        <td>{{car.dailyPrice |varAdded:18 |currency }}</td>
     </tr>
 </table>
 

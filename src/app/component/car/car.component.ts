@@ -15,6 +15,7 @@ export class CarComponent implements OnInit {
   carDetails: CarDetail[] = []
   isDatLoaded: boolean = false
   isDetailLoaded:boolean = false
+  filterText=""
 
   deneme:Car
   
