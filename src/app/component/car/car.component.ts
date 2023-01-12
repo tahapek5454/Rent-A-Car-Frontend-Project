@@ -16,10 +16,15 @@ export class CarComponent implements OnInit {
   isDatLoaded: boolean = false
   isDetailLoaded:boolean = false
 
+  deneme:Car
+  
+
   constructor(private carService: CarService, private activatedRoute:ActivatedRoute) { }
 
   // componentin dom'a yerlesmesinde olucak seyler bizim console'a yazacagimiz seyler gibi
   ngOnInit(): void {
+
+    
 
     this.activatedRoute.params.subscribe(params =>{
       if(params["brandId"]){
@@ -33,15 +38,24 @@ export class CarComponent implements OnInit {
       }
     })
 
-
   }
 
   getCarDetails(){
+    var imageUrl = "https://localhost:44379/Uploads/Images/"
+    var defaultImageUrl = "https://localhost:44379/Uploads/DefaultImage.jpg"
+    
+    
     this.carService.getCarDetails().subscribe(response => {
       this.carDetails = response.data
-   
+      this.carDetails.forEach(carDetail => {
+        if(carDetail.imagePath == null){
+          carDetail.imagePath=defaultImageUrl
+        }else{
+          carDetail.imagePath = imageUrl+carDetail.imagePath
+        }
+        
+      });
       this.isDatLoaded = true
-
     })
 
   }

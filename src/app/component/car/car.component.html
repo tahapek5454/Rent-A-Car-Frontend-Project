@@ -13,7 +13,7 @@
         </tr>
     </thead>
 
-    <tr *ngFor="let car of carDetails">
+    <tr *ngFor="let car of carDetails" routerLink="cars/detail/{{car.id}}">
         <td>{{car.id}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td> 
@@ -22,25 +22,3 @@
 </table>
 
 
-<!-- <table *ngIf="isDatLoaded" class="table">
-
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>BrandId</th>
-            <th>ColorId</th>
-            <th>ModelYear</th>
-            <th>DailyPrice</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-
-    <tr *ngFor="let car of cars">
-        <td>{{car.id}}</td>
-        <td>{{car.brandId}}</td>
-        <td>{{car.colorId}}</td> 
-        <td>{{car.modelYear}}</td> 
-        <td>{{car.dailyPrice}}</td> 
-        <td>{{car.description}}</td>
-    </tr>
-</table> -->
