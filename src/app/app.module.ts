@@ -12,6 +12,7 @@ import { ColorComponent } from './component/color/color.component';
 import { RentalComponent } from './component/rental/rental.component';
 import { CarDetailComponent } from './component/car-detail/car-detail.component';
 import { VarAddedPipe } from './pipes/var-added.pipe';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VarAddedPipe } from './pipes/var-added.pipe';
     ColorComponent,
     RentalComponent,
     CarDetailComponent,
-    VarAddedPipe
+    VarAddedPipe,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,
