@@ -1,6 +1,6 @@
-<ul class="list-group">
+<ul class="list-group my-4">
 
-        <button (click)="changeStatusAllCarButton()" routerLink="cars" class="list-group-item list-group-item-action"
+        <button (click)="changeStatusAllCarButton()" routerLink="/" class="list-group-item list-group-item-action"
                 [ngClass]="{active: statusAllCarButton}">
                 Tüm Arabalar</button>
 
@@ -11,6 +11,6 @@
 
 
 
-<div *ngIf="currentBrand" class="alert alert-primary" role="alert">
+<!-- <div *ngIf="currentBrand" class="alert alert-primary" role="alert">
         Sectiginiz Brand {{currentBrand.name}}
-</div>
+</div> -->

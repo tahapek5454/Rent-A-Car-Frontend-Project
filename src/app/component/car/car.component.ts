@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car/car';
 import { CarDetail } from 'src/app/models/car/carDetail';
+import { RentalAvaliable } from 'src/app/models/rental/rentalAvaliable';
 import { CarService } from 'src/app/services/car/car.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class CarComponent implements OnInit {
   isDatLoaded: boolean = false
   isDetailLoaded:boolean = false
   filterText=""
+  filterTextColor=""
+  avaliableCarIdCheck:number[] = []
 
   deneme:Car
   
@@ -30,14 +33,50 @@ export class CarComponent implements OnInit {
     this.activatedRoute.params.subscribe(params =>{
       if(params["brandId"]){
         this.getCarDetailsByBrandId(params["brandId"])
+        this.getAvaliableCar()
+
       }else if(params["colorId"]){
        console.log(params["colorId"])
         this.getCarDetailsByColorId(params["colorId"])
+        this.getAvaliableCar()
+
         
       }else{
         this.getCarDetails()
+        this.getAvaliableCar()
       }
     })
+
+  }
+
+
+  getAvaliableCar(){
+    this.carService.getAvaliableCar().subscribe(response =>{
+
+      var data:RentalAvaliable[] = response.data
+
+      data.forEach(element => {
+
+        if(element.returnDate == null){
+          this.avaliableCarIdCheck.push(element.carId)
+       
+        }
+        
+      });
+
+    })
+
+  }
+
+  checkAvaliable(car:CarDetail){
+
+    console.log(this.avaliableCarIdCheck)
+
+    if(this.avaliableCarIdCheck.includes(car.id)){
+      return "btn btn-success disabled"
+    }else{
+      return "btn btn-success"
+    }
 
   }
 

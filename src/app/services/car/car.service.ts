@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { CarDetail } from 'src/app/models/car/carDetail';
 import { Car } from 'src/app/models/car/car';
+import { RentalAvaliable } from 'src/app/models/rental/rentalAvaliable';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,13 @@ export class CarService {
 
 
   constructor(private httpClient: HttpClient) { }
+
+  getAvaliableCar():Observable<ListResponseModel<RentalAvaliable>>{
+    let newApiUrl = this.apiUrl + "Rentals/GetAllRentals"
+    return this.httpClient.get<ListResponseModel<RentalAvaliable>>(newApiUrl)
+
+
+  }
 
   // subscribe olunabilir bir metod 
   getCars():Observable<ListResponseModel<Car>> {
