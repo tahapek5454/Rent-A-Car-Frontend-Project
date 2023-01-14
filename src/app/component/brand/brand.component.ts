@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand/brand';
 import { BrandService } from 'src/app/services/brand/brand.service';
 
@@ -14,7 +13,7 @@ export class BrandComponent implements OnInit {
   currentBrand:Brand
   statusAllCarButton = false
 
-  constructor(private brandService:BrandService, private toastrService:ToastrService){}
+  constructor(private brandService:BrandService){}
 
   ngOnInit(): void {
 

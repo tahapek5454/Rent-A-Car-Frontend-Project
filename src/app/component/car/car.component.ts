@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car/car';
 import { CarDetail } from 'src/app/models/car/carDetail';
 import { RentalAvaliable } from 'src/app/models/rental/rentalAvaliable';
 import { CarService } from 'src/app/services/car/car.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-car',
@@ -23,7 +25,11 @@ export class CarComponent implements OnInit {
   deneme:Car
   
 
-  constructor(private carService: CarService, private activatedRoute:ActivatedRoute) { }
+  constructor(
+    private carService: CarService, 
+    private activatedRoute:ActivatedRoute,  
+    private toastrService:ToastrService,
+    private cartService:CartService) { }
 
   // componentin dom'a yerlesmesinde olucak seyler bizim console'a yazacagimiz seyler gibi
   ngOnInit(): void {
@@ -48,6 +54,7 @@ export class CarComponent implements OnInit {
     })
 
   }
+
 
 
   getAvaliableCar(){
@@ -133,7 +140,13 @@ export class CarComponent implements OnInit {
   }
 
   addToCart(car:CarDetail){
-    console.log(car.brandName)
+    this.showToast(car)
+    this.cartService.addToCart(car)
+  }
+
+  
+  showToast(car:CarDetail){
+    this.toastrService.success(car.brandName,"Kiralama Sepete Eklendi")
   }
 
 }

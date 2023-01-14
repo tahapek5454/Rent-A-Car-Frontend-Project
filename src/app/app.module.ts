@@ -39,7 +39,9 @@ import { FilterForColorPipe } from './pipes/filter-for-color.pipe';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
