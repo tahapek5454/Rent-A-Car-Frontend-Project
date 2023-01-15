@@ -55,7 +55,7 @@ export class CarService {
 
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(car);
-    console.log(body)
+
 
     let newApiUrl = this.apiUrl + "Cars/AddCar"
     return this.httpClient.post<ResponseModel>(newApiUrl,  body,{'headers':headers})

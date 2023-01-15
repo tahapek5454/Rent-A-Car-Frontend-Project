@@ -24,9 +24,33 @@ export class CarAddComponent implements OnInit{
       let carModel = Object.assign({}, this.carAddForm.value)
       console.log(JSON.stringify(carModel) )
       this.carService.addCar(carModel).subscribe(response =>{
-        console.log(response)
+      this.toastrService.success(response.message,"Basarili")
+        
+      },(responseError)=>{  // Business Rules Not exception but bad Request handler
+      
+         
+    
+          if(Object.keys(responseError.error).length == 2){
+
+          this.toastrService.error(responseError.error.message,"Dogrulama Hatasi")
+
+
+          }
+          else if(responseError.error.Errors.length > 0){ //Validation Exception + BadRequest
+  
+            for (let index = 0; index < responseError.error.Errors.length; index++) {
+              let element = responseError.error.Errors[index];
+  
+          this.toastrService.error(element.ErrorMessage,"Dogrulama Hatasi")
+              
+            }
+            
+  
+          }
+  
+        
+        
       })
-      this.toastrService.success("Arac Eklendi","Basarili")
 
     }else{
       this.toastrService.error("Form Hatali","Dikkat")
