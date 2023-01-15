@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Arac Ekle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+
+                    <label for="brandId">Brand ID</label>
+                    <div class="form-group">
+                        <input type="number" id="brandId" formControlName="brandId" class="form-control"
+                            placeholder="Araba Brand ID">
+
+                    </div>
+
+                    <label for="colorId">Color Id</label>
+                        <div class="form-group">
+                            <input type="number" id="colorId" formControlName="colorId" class="form-control"
+                                placeholder="Araba Color ID">
+
+                        </div>
+
+                        <label for="modelYear">ModelYear</label>
+                        <div class="form-group">
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control"
+                                placeholder="Araba modelYear">
+
+                        </div>
+
+                        <label for="dailyPrice">DailyPrice</label>
+                        <div class="form-group">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
+                                placeholder="Araba dailyPrice">
+
+                        </div>
+
+                        <label for="description">Description</label>
+                        <div class="form-group">
+                            <input type="text" id="description" formControlName="description" class="form-control"
+                                placeholder="Araba description">
+
+                        </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button  class="btn btn-primary" (click)="add()">Ekle</button>
+            </div>
+        </div>
+
+    </div>
+</div>

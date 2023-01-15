@@ -5,6 +5,7 @@ import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { CarDetail } from 'src/app/models/car/carDetail';
 import { Car } from 'src/app/models/car/car';
 import { RentalAvaliable } from 'src/app/models/rental/rentalAvaliable';
+import { ResponseModel } from 'src/app/models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,17 @@ export class CarService {
   getCarDetailsByColorId(colorId:number):Observable<ListResponseModel<CarDetail>>{
     let newApiUrl = this.apiUrl + "Cars/GetCarDetailsByColorId?id="+colorId
     return this.httpClient.get<ListResponseModel<CarDetail>>(newApiUrl)
+  }
+
+  addCar(car:any):Observable<ResponseModel>{
+
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(car);
+    console.log(body)
+
+    let newApiUrl = this.apiUrl + "Cars/AddCar"
+    return this.httpClient.post<ResponseModel>(newApiUrl,  body,{'headers':headers})
+
   }
 
 }
