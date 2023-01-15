@@ -28,6 +28,8 @@ export class CartService {
       
     }
 
+
+
   }
 
   removeToCart(carDetail:CarDetail){
@@ -35,11 +37,18 @@ export class CartService {
 
     CartItems.splice(CartItems.indexOf(item),1)
 
+    
+
+
 
   }
 
   list(){
+ 
     return CartItems 
+    
   }
+
+  
 
 }

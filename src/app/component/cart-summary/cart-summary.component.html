@@ -6,6 +6,6 @@
       <li *ngFor="let cart of cartItems"><a class="dropdown-item"><span class="badge text-bg-secondary me-4">{{cart.quantity}}</span>{{cart.carDetail.brandName}}<button (click)="removeFromCart(cart.carDetail)" class="badge text-bg-danger ms-4">Sil</button></a></li>
 
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sepete Git</a></li>
+      <li><a class="dropdown-item" routerLink="cars/pay" href="#">Sepete Git</a></li>
     </ul>
   </li>

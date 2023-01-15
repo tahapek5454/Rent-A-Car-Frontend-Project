@@ -18,6 +18,7 @@ import { CartSummaryComponent } from './component/cart-summary/cart-summary.comp
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import { ToastrModule } from 'ngx-toastr';
 import { FilterForColorPipe } from './pipes/filter-for-color.pipe';
+import { PayComponent } from './component/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FilterForColorPipe } from './pipes/filter-for-color.pipe';
     VarAddedPipe,
     FilterPipePipe,
     CartSummaryComponent,
-    FilterForColorPipe
+    FilterForColorPipe,
+    PayComponent
   ],
   imports: [
     BrowserModule,

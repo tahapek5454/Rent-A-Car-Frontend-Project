@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="row">
+        <div *ngFor="let car of cartItems" class="col mt-4">
+
+            <ul class="list-group">
+                <li class="list-group-item"><img src={{car.carDetail.imagePath}} class="img-thumbnail" alt="Ressim Yok">
+                </li>
+                <li class="list-group-item">{{car.carDetail.brandName}}</li>
+                <li class="list-group-item">{{car.carDetail.colorName}}</li>
+                <li class="list-group-item">{{car.carDetail.dailyPrice|varAdded:18 |currency}}</li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <p class="fw-bold fs-2 d-flex justify-content-center">Belirtilen Toplam Tutar</p>
+            <p class="fw-bold fs-2 d-flex justify-content-center">{{total |varAdded:18 |currency }}</p>
+
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary">Kirala</button>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-danger">Iptal Et</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
