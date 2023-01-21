@@ -6,6 +6,7 @@ import { CarComponent } from './component/car/car.component';
 import { LoginComponent } from './component/login/login.component';
 import { PayComponent } from './component/pay/pay.component';
 import { RentalComponent } from './component/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"",pathMatch:"full", component:CarComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path:"cars/color/:colorId", component:CarComponent},
   {path:"cars/detail/:carId", component:CarDetailComponent},
   {path:"cars/pay", component:PayComponent},
-  {path:"cars/add", component:CarAddComponent},
+  {path:"cars/add", component:CarAddComponent, canActivate:[LoginGuard]},
   {path:"login", component:LoginComponent},
 
 

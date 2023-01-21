@@ -25,9 +25,10 @@ export class RentalService {
   addRental(rent:any):Observable<ResponseModel>{
     let newApiUrl = "https://localhost:44379/api/Rentals/AddRental"
 
-    const headers = { 'content-type': 'application/json'}  
+    // const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(rent);
-    return this.httpClient.post<ResponseModel>(newApiUrl,  body,{'headers':headers})
+    return this.httpClient.post<ResponseModel>(newApiUrl,  body)
+    // return this.httpClient.post<ResponseModel>(newApiUrl,  body,{'headers':headers})
 
   }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; //httClient'a injection yapar
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; //httClient'a injection yapar
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // ngModule entegresi
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { FilterForColorPipe } from './pipes/filter-for-color.pipe';
 import { PayComponent } from './component/pay/pay.component';
 import { CarAddComponent } from './component/car-add/car-add.component';
 import { LoginComponent } from './component/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { LoginComponent } from './component/login/login.component';
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
